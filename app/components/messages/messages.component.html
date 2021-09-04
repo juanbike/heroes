@@ -1,0 +1,29 @@
+
+<!----
+-----------------------------------------------------------------
+MOSTRAR MENSAJES EN TODA LA APLICACION
+https://angular.io/tutorial/toh-pt4#inject-it-into-the-heroservice
+Inyectar el servico de mensajes en hero.service.ts
+
+Enlazar con el MessageService
+Reemplace la MessagesComponentplantilla generada por CLI con lo siguiente
+
+
+Esta plantilla se une directamente al componente messageService.
+
+El solo muestra el área de mensajes si hay mensajes para mostrar.*ngIf
+An presenta la lista de mensajes en elementos repetidos .*ngFor<div>
+Un enlace de evento angular vincula el evento de clic del botón a MessageService.clear().
+Los mensajes se verán mejor cuando agregue los estilos CSS privados a messages.component.css
+ como se enumeran en una de las pestañas de "revisión de código final" a continuación.
+------------------------------------------------------------->
+
+
+<div *ngIf="messageService.messages.length">
+
+  <h2>Messages</h2>
+  <button class="clear"
+          (click)="messageService.clear()">Clear messages</button>
+  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+
+</div>

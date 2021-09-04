@@ -1,0 +1,149 @@
+
+<!----
+	Muestra el objeto héroe
+	https://angular.io/tutorial/toh-pt1#show-the-hero-object
+	---------------------------------------------------------
+
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div>
+
+
+Formatear con UppercasePipe
+<h2>{{hero.name | uppercase}} Details</h2>
+----->
+
+
+<!----
+Edita el héroe
+https://angular.io/tutorial/toh-pt1#edit-the-hero
+Los usuarios deberían poder editar el nombre del héroe en un <input>cuadro de texto.
+
+Refactorice el área de detalles en la HeroesComponent
+¿Que es una REFACTORIZACION?
+					Es crear una propiedad de una clase y asignarle el nuevo TIPO DE DATO 
+
+
+<div>
+	<label for="name">Hero name: </label>
+	<input id="name" [(ngModel)]="hero.name" placeholder="name">
+</div>
+---->
+
+
+<!--------------------------------
+	LISTA DE HEROES
+	Lista de héroes con *ngFor
+	https://angular.io/api/common/NgForOf
+
+	<h2>My Heroes</h2>
+<ul class="heroes">
+  <li  *ngFor="let hero of heroes">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+--------------------------------->	
+
+
+<!--------------------------------
+	Paso-2: Mostrar una LISTA
+	Agregar un enlace de evento de clic
+	https://angular.io/tutorial/toh-pt2#add-a-click-event-binding
+	-------------------------------------------------------------
+
+	VIENDO DETALLES DE LA LISTA DE HEROES
+		AÑADIENDO UN EVENTO CLIC DE DATA BIDING
+	<h2>My Heroes</h2>
+	<ul class="heroes">
+	  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+		<span class="badge">{{hero.id}}</span> {{hero.name}}
+	  </li>
+	</ul>
+
+--------------------------------->	
+
+
+<!---------------
+<h2>My Heroes</h2>
+	<ul class="heroes">
+	  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+		<span class="badge">{{hero.id}}</span> {{hero.name}}
+	  </li>
+	</ul>
+------->	
+
+<!------------------------------------------------
+		LISTADO DE LOS HEROES
+src / app / heroes / heroes.component.html (lista con onSelect)
+		--------------------------------------------------------------
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
+---------------------------------------------------->
+
+
+
+<!----
+PASO-5: Agregar navegación con enrutamiento
+https://angular.io/tutorial/toh-pt5#add-navigation-with-routing
+
+	HeroesComponent enlaces de héroe
+	--------------------------------
+
+	Quite la parte <li>posterior para que quede solo, envuelva la insignia y el nombre en un elemento de anclaje ( ) y agregue un atributo 
+		al ancla que sea el mismo que en la plantilla del tablero *ngFor<a>routerLink
+		
+		src / app / heroes / heroes.component.html (lista con enlaces)
+
+<ul class="heroes">
+		  <li *ngFor="let hero of heroes">
+			<a routerLink="/detail/{{hero.id}}">
+			  <span class="badge">{{hero.id}}</span> {{hero.name}}
+			</a>
+		  </li>
+		</ul>
+----->	
+
+<!------
+	6- Obtener datos de un servidor
+												https://angular.io/tutorial/toh-pt6
+11-Agrega un nuevo héroe
+	------------------------
+		Para agregar un héroe, esta aplicación solo necesita el nombre del héroe. Puede usar un elemento <input>  emparejado con un botón Agregar.
+	
+
+------->	
+
+<h2>My Heroes</h2>
+
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    
+    <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+     
+  </li>
+</ul>

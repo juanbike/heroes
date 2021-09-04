@@ -1,0 +1,18 @@
+<!-------------------------------------
+		SECCION DE DETALLES
+		https://angular.io/tutorial/toh-pt3#create-a-feature-component
+		El HeroesComponent solo presentará la lista de héroes. El HeroDetailComponent presentará detalles de un héroe seleccionado.
+
+----->		
+<button (click)="goBack()">go back</button>
+<div *ngIf="hero">
+	<h2>{{hero.name | uppercase}} Details</h2>
+	<div><span>id: </span>{{hero.id}}</div>
+	<div>
+	  <label for="hero-name">Hero name: </label>
+	  <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+	</div>
+</div>	
+<button (click)="save()">save</button>
+
+

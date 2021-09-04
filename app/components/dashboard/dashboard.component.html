@@ -1,0 +1,29 @@
+
+<!---
+Ahora que el enrutador tiene una ruta hacia HeroDetailComponent, corrija los enlaces del héroe del tablero para navegar usando la ruta del
+		tablero parametrizada .
+--->	
+
+<h2>Top Heroes</h2>
+		<a *ngFor="let hero of heroes"
+		  routerLink="/detail/{{hero.id}}">
+		  {{hero.name}}
+		</a>
+<app-hero-search></app-hero-search>
+
+
+<!----------
+
+6- Obtener datos de un servidor
+												https://angular.io/tutorial/toh-pt6	
+13-Buscar por nombre
+--------------------
+Agregar búsqueda al tablero
+---------------------------
+			
+1-Abra la plantilla DashboardComponent y agregue el elemento de búsqueda de héroe <app-hero-search>, al final del marcado.
+Para que esto funcione, el siguiente paso es agregar un componente con un selector que coincida con <app-hero-search>.
+
+
+----->	
+		

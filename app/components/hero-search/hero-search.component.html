@@ -1,0 +1,27 @@
+
+<!----------------
+AsyncPipe
+			---------
+El comando *ngFor repite los objetos "héroe". Observe que *ngFor itera sobre una lista llamada heroes$, sin errores. El sinbolo ($)es una convención
+que indica que "heroes$" es un objeto "observable" , no es una matriz.
+
+Como *ngFor no puede hacer nada con observable , use el carácter "pipe"de barra vertical (|) seguido por el comando "async". Esto identifica
+			un "AsyncPipe" y se suscribe a un observable automáticamente para que no tenga que hacerlo en la clase de componente.
+
+
+------------->
+
+
+
+				<div id="search-component">
+				  <label for="search-box">Hero Search</label>
+				  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+				  <ul class="search-result">
+					<li *ngFor="let hero of heroes$ | async" >
+					  <a routerLink="/detail/{{hero.id}}">
+						{{hero.name}}
+					  </a>
+					</li>
+				  </ul>
+				</div>
